@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MANAN TAHIR SPECIAL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: url('https://www.billboard.com/wp-content/uploads/2022/06/sadie-sink-stranger-things-2022-billboard-1548.jpg?w=1024');
+      --bg-light: url('https://www.nme.com/wp-content/uploads/2025/03/Sadie-Sink-at-SXSW.jpg');
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    body.dark {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), var(--bg-dark);
+      color: #fff;
+    }
+
+    body.light {
+      background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), var(--bg-light);
+      color: #111;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 750px;
+      width: 100%;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    body.light .container {
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid white;
+      margin-bottom: 15px;
+    }
+
+    .logo h1 {
+      font-weight: 700;
+      font-size: 1.9rem;
+      letter-spacing: 1.5px;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      border-radius: 50px;
+      padding: 10px 15px;
+      font-size: 18px;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    body.light .theme-toggle {
+      background: rgba(0, 0, 0, 0.15);
+      color: #000;
+    }
+
+    .process-selector {
+      display: flex;
+      gap: 20px;
+      margin: 25px 0;
+      justify-content: center;
+    }
+
+    .process-box {
+      flex: 1;
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 17px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .process-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    .process-box.selected {
+      border: 2px solid white;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+    }
+
+    .id-1006 {
+      background: linear-gradient(135deg, #3498db, #2980b9);
+    }
+
+    .id-1115 {
+      background: linear-gradient(135deg, #e67e22, #d35400);
+    }
+
+    .id-1116 {
+      background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    }
+
+    textarea {
+      width: 100%;
+      border: none;
+      padding: 18px;
+      border-radius: 12px;
+      font-size: 16px;
+      resize: vertical;
+      background-color: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      margin-bottom: 20px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body.light textarea {
+      background-color: rgba(0, 0, 0, 0.08);
+      color: #000;
+    }
+
+    textarea:focus {
+      outline: none;
+      border: 2px solid #fff;
+    }
+
+    .btn {
+      width: 100%;
+      background: #1abc9c;
+      border: none;
+      color: white;
+      font-size: 16px;
+      padding: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      background: #16a085;
+      transform: scale(1.01);
+    }
+
+    .btn.secondary {
+      background: #e74c3c;
+    }
+
+    .btn.secondary:hover {
+      background: #c0392b;
+    }
+
+    .btn.clear {
+      background: #f39c12;
+    }
+
+    .btn.clear:hover {
+      background: #e67e22;
+    }
+
+    .note {
+      text-align: center;
+      font-size: 12px;
+      color: #ddd;
+      margin-top: 15px;
+    }
+
+    body.light .note {
+      color: #444;
+    }
+
+    @media (max-width: 600px) {
+      .process-selector {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body class="dark">
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
+  <div class="container">
+    <div class="logo">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_sLDkmWf0nte6nxg_3Sk5cbZxU-_4lr0ADQ&s" alt="Logo">
+      <h1>MANAN TAHIR SPECIAL</h1>
+    </div>
+
+    <div class="process-selector" id="processBoxGroup">
+      <div class="process-box id-1006 selected" data-id="1006">1006</div>
+      <div class="process-box id-1115" data-id="1115">1115</div>
+      <div class="process-box id-1116" data-id="1116">1116</div>
+    </div>
+
+    <textarea id="auditIds" placeholder="Paste audit record IDs here, one per line..."></textarea>
+
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <button class="btn" onclick="generateAndOpenLinks()">🚀 Open Links</button>
+      <button class="btn secondary" onclick="closeAllTabs()">❌ Close All Tabs</button>
+      <button class="btn clear" onclick="clearTextarea()">🧹 Clear Text</button>
+    </div>
+
+    <div class="note">Make sure pop-up blockers are disabled for this to work.</div>
+  </div>
+
+  <script>
+    const baseUrl = "https://outsourcing.logisticsmngmt.com/next/govern/aegis-auditing/detail";
+    let selectedProcessId = "1006";
+    const openedTabs = [];
+
+    document.querySelectorAll('.process-box').forEach(box => {
+      box.addEventListener('click', () => {
+        document.querySelectorAll('.process-box').forEach(b => b.classList.remove('selected'));
+        box.classList.add('selected');
+        selectedProcessId = box.getAttribute('data-id');
+      });
+    });
+
+    function generateAndOpenLinks() {
+      const idsText = document.getElementById('auditIds').value.trim();
+      if (!idsText) {
+        alert('Please paste at least one audit record ID.');
+        return;
+      }
+
+      const ids = idsText.split(/\r?\n/).map(id => id.trim()).filter(id => id);
+      if (ids.length === 0) {
+        alert('No valid IDs found.');
+        return;
+      }
+
+      ids.forEach(auditRecordId => {
+        const finalUrl = ${baseUrl}?audit_process_id=${selectedProcessId}&audit_record_id=${auditRecordId}&current_audit_level=1;
+        const tab = window.open(finalUrl, '_blank');
+        if (tab) openedTabs.push(tab);
+      });
+    }
+
+    function closeAllTabs() {
+      if (openedTabs.length === 0) {
+        alert("No tabs opened yet or they're already closed.");
+        return;
+      }
+      openedTabs.forEach(tab => {
+        try {
+          tab.close();
+        } catch (e) {
+          console.warn("Failed to close tab:", e);
+        }
+      });
+      openedTabs.length = 0;
+    }
+
+    function clearTextarea() {
+      document.getElementById('auditIds').value = '';
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const toggle = document.querySelector('.theme-toggle');
+      body.classList.toggle('dark');
+      body.classList.toggle('light');
+
+      if (body.classList.contains('light')) {
+        toggle.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        toggle.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    window.onload = () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.body.classList.remove('dark');
+        document.body.classList.add('light');
+        document.querySelector('.theme-toggle').textContent = '☀️';
+      }
+    };
+  </script>
+</body>
+</html>
